@@ -61,14 +61,19 @@
           <li
             v-for="todo in filteredTodos"
             class="todo"
-            :data-testid="'Todo-' + todo.id"
+            data-testid="Todo"
+            :data-id="todo.id"
             :key="todo.id"
             :class="{ completed: todo.completed }"
           >
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed" />
               <label>{{ todo.title }}</label>
-              <button class="destroy" @click="removeTodo(todo)" data-testid="Delete"></button>
+              <button
+                class="destroy"
+                @click="removeTodo(todo)"
+                data-testid="Delete"
+              ></button>
             </div>
           </li>
         </ul>
@@ -79,7 +84,7 @@
 
       <footer class="footer" v-show="todos.length" data-testid="Footer">
         <span class="todo-count">
-          <strong v-text="remaining" data-cy="remaining-count"></strong>
+          <strong v-text="remaining" data-testid="TodosRemaining"></strong>
           {{pluralize('item', remaining)}} left
         </span>
         <ul class="filters">
