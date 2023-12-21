@@ -1,4 +1,4 @@
-# test-ids-blog-post
+# test-ids-blog-post [![ci](https://github.com/bahmutov/test-ids-blog-post/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/test-ids-blog-post/actions/workflows/ci.yml)
 
 📝 Read the blog post [Do Not Put Ids Into Test Ids](https://glebbahmutov.com/blog/no-id-in-test-ids/).
 
