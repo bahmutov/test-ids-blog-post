@@ -1,5 +1,7 @@
 # test-ids-blog-post
 
+📝 Read the blog post [Do Not Put Ids Into Test Ids](https://glebbahmutov.com/blog/no-id-in-test-ids/).
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2023
