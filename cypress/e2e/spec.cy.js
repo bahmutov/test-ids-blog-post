@@ -74,3 +74,29 @@ it('has a unique item id', () => {
       cy.getByTestId('Todo').first().should('have.attr', 'data-id', id)
     })
 })
+
+it('checks the data attributes object', () => {
+  // clear all todos before the test
+  cy.request('POST', '/reset', { todos: [] })
+  cy.visit('/')
+  cy.get('.loaded')
+  cy.intercept('POST', '/todos').as('newTodo')
+  cy.getByTestId('TodoInput')
+    .type('Write code{enter}')
+    .type('Test it{enter}')
+    .type('Test it again{enter}')
+  cy.getByTestId('Todo').should('have.length', 3)
+  // the first item sent to the server
+  cy.wait('@newTodo')
+    .its('response.body.id')
+    .should('be.a', 'string')
+    .then((id) => {
+      cy.getByTestId('Todo')
+        .first()
+        .invoke('data')
+        .should('deep.equal', {
+          testid: 'Todo',
+          id: String(id),
+        })
+    })
+})
