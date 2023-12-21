@@ -7,7 +7,7 @@
     "test": "cypress run",
     "cy:open": "cypress open",
     "start": "json-server --static . --watch data.json --middlewares ./node_modules/json-server-reset",
-    "dev": "start-test 3000 cy:open"
+    "dev": "start-test http://localhost:3000 cy:open"
   },
   "repository": {
     "type": "git",

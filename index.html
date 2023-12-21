@@ -56,10 +56,11 @@
         />
       </header>
       <section class="main" v-show="todos.length">
-        <ul class="todo-list">
+        <ul class="todo-list" data-testid="Todos">
           <li
             v-for="todo in filteredTodos"
             class="todo"
+            :data-testid="Todo-todo.id"
             :key="todo.id"
             :class="{ completed: todo.completed }"
           >
@@ -75,7 +76,7 @@
         <div class="loading" v-show="loading">Loading data ...</div>
       </div>
 
-      <footer class="footer" v-show="todos.length">
+      <footer class="footer" v-show="todos.length" data-testid="Footer">
         <span class="todo-count">
           <strong v-text="remaining" data-cy="remaining-count"></strong>
           {{pluralize('item', remaining)}} left
@@ -83,7 +84,7 @@
         <ul class="filters">
           <li>
             <a
-              data-cy="filter-all"
+              data-testid="filter-all"
               href="#/all"
               :class="{selected: visibility == 'all'}"
               >All</a
@@ -91,7 +92,7 @@
           </li>
           <li>
             <a
-              data-cy="filter-active"
+              data-testid="filter-active"
               href="#/active"
               :class="{selected: visibility == 'active'}"
               >Active</a
@@ -99,7 +100,7 @@
           </li>
           <li>
             <a
-              data-cy="filter-completed"
+              data-testid="filter-completed"
               href="#/completed"
               :class="{selected: visibility == 'completed'}"
               >Completed</a
@@ -108,6 +109,7 @@
         </ul>
         <button
           class="clear-completed"
+          data-testid="Clear-completed"
           @click="removeCompleted"
           v-show="todos.length > remaining"
         >
@@ -115,15 +117,6 @@
         </button>
       </footer>
     </section>
-    <footer class="info">
-      <p>cy-vs-pw-example-todomvc</p>
-      <p>
-        <a href="https://cypress.tips/courses/cypress-vs-playwright"
-          >Cypress vs Playwright</a
-        >
-        course
-      </p>
-    </footer>
 
     <script src="vendor/polyfill.min.js"></script>
     <script src="vendor/director.js"></script>
@@ -131,8 +124,5 @@
     <script src="vendor/vuex.js"></script>
     <script src="vendor/axios.min.js"></script>
     <script src="app.js"></script>
-
-    <!-- dummy analytics library that calls "window.track()" on load -->
-    <script src="analytics.js"></script>
   </body>
 </html>
