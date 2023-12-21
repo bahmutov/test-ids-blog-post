@@ -47,6 +47,7 @@
         <h1 data-cy="app-title">todos</h1>
         <input
           class="new-todo"
+          data-testid="TodoInput"
           autofocus
           autocomplete="off"
           placeholder="What needs to be done?"
@@ -60,14 +61,14 @@
           <li
             v-for="todo in filteredTodos"
             class="todo"
-            :data-testid="Todo-todo.id"
+            :data-testid="'Todo-' + todo.id"
             :key="todo.id"
             :class="{ completed: todo.completed }"
           >
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed" />
               <label>{{ todo.title }}</label>
-              <button class="destroy" @click="removeTodo(todo)"></button>
+              <button class="destroy" @click="removeTodo(todo)" data-testid="Delete"></button>
             </div>
           </li>
         </ul>

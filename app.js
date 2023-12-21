@@ -1,4 +1,4 @@
-/* global Vue, Vuex, axios, track */
+/* global Vue, Vuex, axios */
 /* eslint-disable no-console */
 /* eslint-disable-next-line */
 const uri = window.location.search.substring(1)
@@ -124,7 +124,6 @@ function appStart() {
         // increase the timeout delay to make the test fail
         // 50ms should be good
         setTimeout(() => {
-          track('todo.add', todo.title)
           axios.post('/todos', todo).then(() => {
             commit('ADD_TODO', todo)
           })
@@ -140,8 +139,6 @@ function appStart() {
         })
       },
       removeTodo({ commit }, todo) {
-        track('todo.remove', todo.title)
-
         axios.delete(`/todos/${todo.id}`).then(() => {
           console.log('removed todo', todo.id, 'from the server')
           commit('REMOVE_TODO', todo)
